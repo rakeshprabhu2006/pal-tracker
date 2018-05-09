@@ -1,6 +1,4 @@
-package io.pivotal.pal.trackerapi;
-
-import org.springframework.http.ResponseEntity;
+package io.pivotal.pal.tracker.trackerapi;
 
 import java.util.List;
 
@@ -9,7 +7,7 @@ public interface TimeEntryRepository {
 
     TimeEntry find(long l);
 
-    TimeEntry delete(long l);
+    void delete(long l);
 
     List<TimeEntry> list();
 

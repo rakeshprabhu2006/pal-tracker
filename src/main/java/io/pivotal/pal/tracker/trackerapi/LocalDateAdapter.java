@@ -1,4 +1,4 @@
-package io.pivotal.pal.trackerapi;
+package io.pivotal.pal.tracker.trackerapi;
 
 import org.springframework.stereotype.Component;
 

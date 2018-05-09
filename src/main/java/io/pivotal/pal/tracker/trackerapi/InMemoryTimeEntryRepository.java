@@ -1,14 +1,9 @@
-package io.pivotal.pal.trackerapi;
-
-import org.springframework.http.ResponseEntity;
+package io.pivotal.pal.tracker.trackerapi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import io.pivotal.pal.trackerapi.TimeEntry;
 
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
@@ -36,8 +31,8 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     }
 
     @Override
-    public TimeEntry delete(long l) {
-        return timeEntries.remove(l);
+    public void delete(long l) {
+        timeEntries.remove(l);
     }
 
     @Override

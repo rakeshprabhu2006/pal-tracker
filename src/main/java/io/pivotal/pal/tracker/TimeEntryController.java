@@ -1,12 +1,12 @@
 package io.pivotal.pal.tracker;
 
-import io.pivotal.pal.trackerapi.TimeEntryRepository;
+import io.pivotal.pal.tracker.trackerapi.TimeEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.pivotal.pal.trackerapi.TimeEntry;
+import io.pivotal.pal.tracker.trackerapi.TimeEntry;
 
 import java.util.List;
 
@@ -36,7 +36,8 @@ public class TimeEntryController {
 
     @DeleteMapping("/time-entries/{l}")
     public ResponseEntity<TimeEntry> delete(@PathVariable Long l) {
-        return new ResponseEntity(timeEntryRepository.delete(l), HttpStatus.NO_CONTENT);
+        timeEntryRepository.delete(l);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
 
     }
 

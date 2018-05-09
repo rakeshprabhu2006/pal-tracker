@@ -1,8 +1,8 @@
 package test.pivotal.pal.tracker;
 
-import io.pivotal.pal.trackerapi.TimeEntry;
+import io.pivotal.pal.tracker.trackerapi.TimeEntry;
 import io.pivotal.pal.tracker.TimeEntryController;
-import io.pivotal.pal.trackerapi.TimeEntryRepository;
+import io.pivotal.pal.tracker.trackerapi.TimeEntryRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
