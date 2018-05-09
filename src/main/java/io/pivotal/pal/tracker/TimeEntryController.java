@@ -3,6 +3,7 @@ package io.pivotal.pal.tracker;
 import io.pivotal.pal.trackerapi.TimeEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.pivotal.pal.trackerapi.TimeEntry;
@@ -39,7 +40,15 @@ public class TimeEntryController {
 
     }
 
-    @GetMapping("/time-entries/{l}")
+    @GetMapping(value = "/time-entries/v2/{l}", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<TimeEntry> readXml(@PathVariable  Long l) {
+        TimeEntry entry = timeEntryRepository.find(l);
+        if( null == entry){
+            return new ResponseEntity( HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(entry, HttpStatus.OK);
+    }
+    @GetMapping(value = "/time-entries/{l}")
     public ResponseEntity<TimeEntry> read(@PathVariable  Long l) {
         TimeEntry entry = timeEntryRepository.find(l);
         if( null == entry){

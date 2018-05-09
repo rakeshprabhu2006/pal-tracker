@@ -1,12 +1,16 @@
 package io.pivotal.pal.trackerapi;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlRootElement()
 public class TimeEntry {
     private long id;
     private long projectId;
     private long userId;
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate date;
     private int hours;
 
