@@ -29,7 +29,7 @@ public class EnvController {
 
 
 
-    @GetMapping("/env")
+    @GetMapping("/env-test")
     public Map<String, String> getEnv() {
         Map env = new HashMap();
         env.put("PORT", port);
