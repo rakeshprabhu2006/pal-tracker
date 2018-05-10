@@ -30,7 +30,7 @@ public class TimeEntryController {
         this.gauge = gauge;
     }
 
-    @PostMapping("/time-entries")
+    @PostMapping(value = "/time-entries", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity create(@RequestBody TimeEntry timeEntryToCreate) {
         counter.increment("TimeEntry.created");
         gauge.submit("timeEntries.count", timeEntryRepository.list().size());
@@ -55,18 +55,8 @@ public class TimeEntryController {
         gauge.submit("timeEntries.count", timeEntryRepository.list().size());
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
-
     }
 
-    @GetMapping(value = "/time-entries/v2/{l}", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<TimeEntry> readXml(@PathVariable  Long l) {
-        TimeEntry entry = timeEntryRepository.find(l);
-        if( null == entry){
-            return new ResponseEntity( HttpStatus.NOT_FOUND);
-        }
-        counter.increment("TimeEntry.read");
-        return new ResponseEntity(entry, HttpStatus.OK);
-    }
     @GetMapping(value = "/time-entries/{l}")
     public ResponseEntity<TimeEntry> read(@PathVariable  Long l) {
         TimeEntry entry = timeEntryRepository.find(l);
